@@ -8,9 +8,9 @@ An opinionated zero-config pytorch trainer
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/Cogniveon/torchflux/blob/main/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/Cogniveon/torchflux/releases)
-[![License](https://img.shields.io/github/license/Cogniveon/torchflux)](https://github.com/Cogniveon/torchflux/blob/main/LICENSE)
-![Coverage Report](assets/coverage.svg)
-![Tests](assets/test_count.svg)
+[![GitHub License](https://img.shields.io/github/license/Cogniveon/torchflux)](https://github.com/Cogniveon/torchflux/blob/main/LICENSE)
+![Coverage Report](https://raw.githubusercontent.com/Cogniveon/torchflux/gh-pages/assets/coverage.svg)
+![Tests](https://raw.githubusercontent.com/Cogniveon/torchflux/gh-pages/assets/test_count.svg)
 
 ## Getting started
 

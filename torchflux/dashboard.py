@@ -1,3 +1,5 @@
+from typing import Any
+
 import pathlib
 
 import anywidget
@@ -11,5 +13,5 @@ class TorchFluxDashboard(anywidget.AnyWidget):
     _css = pathlib.Path(__file__).parent / "static" / "style.css"
     value = traitlets.Int(0).tag(sync=True)
 
-    def __init__(self, *args: pathlib.Any, **kwargs: pathlib.Any) -> None:
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)

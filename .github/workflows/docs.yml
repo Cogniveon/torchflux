@@ -8,21 +8,50 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+        node-version: ["20"]
 
-    - name: Set up Python
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: pnpm/action-setup@v3
+      name: Install pnpm
+      with:
+        version: 8
+        run_install: false
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: '3.12'
-
+        python-version: ${{ matrix.python-version }}
+    - name: Install Hatch
+      run: pipx install hatch
+    - name: Python cache
+      uses: actions/cache@v4
+      with:
+        path: .venv
+        key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+    - uses: actions/cache@v4
+      name: Setup pnpm cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
     - name: Coverage
       run: |
         make coverage
-
+        rm -rf htmlcov/.gitignore
     - name: Build docs
       run: make docs
-
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
       with:

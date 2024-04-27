@@ -1,4 +1,4 @@
-from torchflux import TorchFluxDashboard
+from torchflux.dashboard import TorchFluxDashboard
 
 
 def test_demo():
