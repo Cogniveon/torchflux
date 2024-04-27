@@ -1,0 +1,170 @@
+# Project information
+site_name: TorchFlux
+site_url: https://cogniveon.github.io/torchflux/
+site_author: Rohit Krishnan
+site_description: >-
+  An opinionated zero-config pytorch trainer
+
+# Repository
+repo_name: Cogniveon/torchflux
+repo_url: https://github.com/Cogniveon/torchflux
+
+# Copyright
+copyright: Copyright &copy; 2024 Rohit Krishnan
+
+theme:
+  name: material
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    # - content.footnote.tooltips
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+plugins:
+- search:
+    separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+- minify:
+    minify_html: true
+- coverage:
+    page_name: coverage
+    html_report_dir: htmlcov
+- mkdocstrings:
+    handlers:
+      python:
+        import:
+        - https://docs.python.org/3/objects.inv
+        paths: [torchflux]
+        options:
+          docstring_options:
+            ignore_init_summary: true
+          docstring_section_style: list
+          filters: ["!^_"]
+          # heading_level: 1
+          inherited_members: true
+          merge_init_into_class: true
+          separate_signature: true
+          show_root_heading: true
+          show_root_full_path: true
+          show_root_members_full_path: true
+          show_object_full_path: false
+          show_signature_annotations: true
+          show_symbol_type_heading: true
+          show_symbol_type_toc: true
+          show_submodules: true
+          signature_crossrefs: true
+          show_source: false
+          summary:
+            attributes: true
+            functions: true
+            classes: true
+            modules: false
+
+# Extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+
+# Page tree
+nav:
+  - Home: index.md
+  - Getting started:
+    - Installation: getting_started/index.md
+    - Usage: getting_started/usage.md
+  - Developer:
+    - Contributing: contributing.md
+    - Code of Conduct: code_of_conduct.md
+    - API reference: reference.md
+    - Coverage: coverage.md
+  - Community:
+    - License: license.md
+    - Changelog: changelog.md
+    # - How to upgrade: upgrade.md
+  #     - Reporting a bug: contributing/reporting-a-bug.md
+  #     - Reporting a docs issue: contributing/reporting-a-docs-issue.md
+  #     - Requesting a change: contributing/requesting-a-change.md
+  #     - Adding translations: contributing/adding-translations.md
+  #     - Making a pull request: contributing/making-a-pull-request.md
+  #     - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
+  #   - Guides:
+  #     - Creating a reproduction: guides/creating-a-reproduction.md
+  #   - Community experts program:
+  #     - insiders/community-experts-program/index.md
+  # - Blog:
+  #   - blog/index.md
