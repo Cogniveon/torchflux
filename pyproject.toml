@@ -22,7 +22,7 @@ dynamic = ["version"]
 requires-python = ">=3.8"
 dependencies = ["anywidget"]
 [project.optional-dependencies]
-jupyterlab = ["jupyterlab"]
+jupyterlab = ["jupyterlab", "ipykernel", "watchfiles"]
 test = ["setuptools"]
 
 [project.urls]
@@ -54,8 +54,8 @@ artifacts = ["torchflux/static/*"]
 packages = ["torchflux"]
 [tool.hatch.build.hooks.jupyter-builder]
 build-function = "hatch_jupyter_builder.npm_builder"
-ensured-targets = ["torchflux/static/main.js"]
-skip-if-exists = ["torchflux/static/main.js"]
+ensured-targets = ["torchflux/static/demoWidget.js"]
+skip-if-exists = ["torchflux/static/demoWidget.js"]
 dependencies = ["hatch-jupyter-builder>=0.5.0"]
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 npm = "pnpm"
@@ -66,6 +66,8 @@ requires = ["hatch-pip-compile"]
 
 [tool.hatch.envs.default]
 type = "pip-compile"
+# automatically add the dev feature to the default env (e.g., hatch shell)
+features = ["jupyterlab"]
 [tool.hatch.envs.default.scripts]
 all = [
     # "hatch build",
@@ -157,10 +159,6 @@ dependencies = [
 [tool.hatch.envs.docs.scripts]
 build = ["mkdocs build --clean --strict"]
 serve = ["mkdocs serve --dev-addr localhost:8000"]
-
-# automatically add the dev feature to the default env (e.g., hatch shell)
-# [tool.hatch.envs.default]
-# features = ["jupyterlab"]
 
 
 [tool.black]
